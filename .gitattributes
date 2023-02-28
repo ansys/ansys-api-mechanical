@@ -1,0 +1,6 @@
+* text=auto !eol
+*.sh         eol=lf
+*.bat        eol=crlf
+*.py         text
+*.json       text
+*.proto      text
