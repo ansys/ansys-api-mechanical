@@ -6,3 +6,5 @@ __all__ = ["__version__"]
 
 with open(pathlib.Path(__file__).parent / "VERSION", encoding="utf-8") as f:
     __version__ = f.read().strip()
+
+from .misc import remote_method
