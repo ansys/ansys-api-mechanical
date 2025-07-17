@@ -17,9 +17,9 @@ jobs:
     name: Build package
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Setup Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
       - name: Install build requirements
@@ -37,7 +37,7 @@ jobs:
           python -c "import ansys.api.mechanical; print('Successfully imported ansys.api.mechanical')"
           python -c "from ansys.api.mechanical import __version__; print(__version__)"
       - name: Upload packages
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: ansys-api-mechanical-packages
           path: dist/
@@ -49,11 +49,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
 
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4
 
       - name: Display structure of downloaded files
         run: ls -R
@@ -68,7 +68,7 @@ jobs:
           TWINE_PASSWORD: ${{ secrets.ANSYS_API_MECHANICAL_PYPI_TOKEN }} 
 
       - name: Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           generate_release_notes: true
           files: |
