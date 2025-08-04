@@ -16,7 +16,7 @@ enum LoggerSeverity
 }
 
 // Send RunScript message to run jscript / python script code.
-message RunScriptRequest 
+message RunScriptRequest
 {
 	// script_code can be jscript or python script
 	string script_code = 1;
@@ -28,7 +28,12 @@ message RunScriptRequest
 	LoggerSeverity logger_severity = 3;
 
 	// progress interval at which to send the log_info (in milli seconds)
-	int32 progress_interval = 4; 
+	int32 progress_interval = 4;
+
+    // 1 - new behavior
+    // 0 - old behavior
+    // other values - reserved
+    int32 python_behavior = 5;
 }
 
 // Receive RunScriptResponse when you run jscript or python script code.
